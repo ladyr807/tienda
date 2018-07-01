@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2018 19:33:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tienda.tienda.model.Cliente" table="CLIENTE">
+        <id name="idCliente" type="java.lang.Long">
+            <column name="IDCLIENTE" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombres" type="java.lang.String">
+            <column name="NOMBRES" />
+        </property>
+        <property name="tipoIdentificacion" type="java.lang.String">
+            <column name="TIPOIDENTIFICACION" />
+        </property>
+        <property name="identificacion" type="java.lang.String">
+            <column name="IDENTIFICACION" />
+        </property>
+        <list name="ventas" inverse="false" table="VENTA" lazy="true">
+            <key>
+                <column name="IDCLIENTE" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Venta" />
+        </list>
+        <list name="carritos" inverse="false" table="CARRITO" lazy="true">
+            <key>
+                <column name="IDCLIENTE" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Carrito" />
+        </list>
+    </class>
+</hibernate-mapping>

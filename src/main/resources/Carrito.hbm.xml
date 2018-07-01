@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2018 19:33:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tienda.tienda.model.Carrito" table="CARRITO">
+        <id name="idCarrito" type="java.lang.Long" access="field">
+            <column name="IDCARRITO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.tienda.tienda.model.Cliente" fetch="join">
+            <column name="CLIENTE" />
+        </many-to-one>
+        <property name="subtotal" type="java.math.BigDecimal">
+            <column name="SUBTOTAL" />
+        </property>
+        <list name="listaItem" inverse="false" table="ITEM" lazy="true">
+            <key>
+                <column name="IDCARRITO" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Item" />
+        </list>
+    </class>
+</hibernate-mapping>

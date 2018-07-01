@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: tienda
+Bundle-SymbolicName: tienda
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.tienda.tienda,
+ com.tienda.tienda.controller,
+ com.tienda.tienda.model,
+ com.tienda.tienda.service

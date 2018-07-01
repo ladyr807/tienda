@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2018 19:33:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tienda.tienda.model.Venta" table="VENTA">
+        <id name="idVenta" type="java.lang.Long">
+            <column name="IDVENTA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.tienda.tienda.model.Cliente" fetch="join">
+            <column name="CLIENTE" />
+        </many-to-one>
+        <property name="fechaEntrega" type="java.util.Date">
+            <column name="FECHAENTREGA" />
+        </property>
+        <property name="direccionEntrega" type="java.lang.String">
+            <column name="DIRECCIONENTREGA" />
+        </property>
+        <property name="total" type="java.math.BigDecimal">
+            <column name="TOTAL" />
+        </property>
+        <list name="listaItems" inverse="false" table="ITEM" lazy="true">
+            <key>
+                <column name="IDVENTA" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Item" />
+        </list>
+    </class>
+</hibernate-mapping>

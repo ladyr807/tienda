@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2018 19:33:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tienda.tienda.model.Categoria" table="CATEGORIA">
+        <id name="idCategoria" type="java.lang.Integer" access="field">
+            <column name="IDCATEGORIA" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="java.lang.String">
+            <column name="DESCRIPCION" />
+        </property>
+        <list name="productos" inverse="false" table="PRODUCTO" lazy="true">
+            <key>
+                <column name="IDCATEGORIA" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Producto" />
+        </list>
+    </class>
+</hibernate-mapping>

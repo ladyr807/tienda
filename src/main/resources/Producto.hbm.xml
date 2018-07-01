@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2018 19:33:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tienda.tienda.model.Producto" table="PRODUCTO">
+        <id name="idProducto" type="java.lang.String">
+            <column name="IDPRODUCTO" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="precio" type="java.math.BigDecimal">
+            <column name="PRECIO" />
+        </property>
+        <many-to-one name="categoria" class="com.tienda.tienda.model.Categoria" fetch="join">
+            <column name="CATEGORIA" />
+        </many-to-one>
+        <list name="listaItems" inverse="false" table="ITEM" lazy="true">
+            <key>
+                <column name="IDPRODUCTO" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.tienda.tienda.model.Item" />
+        </list>
+    </class>
+</hibernate-mapping>
